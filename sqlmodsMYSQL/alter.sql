@@ -1,0 +1,2 @@
+ALTER TABLE XXXX_USERS ADD COLUMN cllpaddress varchar(100), cllporgid varchar(50), securityphonenumber varchar(50), ncrid varchar(50), dynamicsid varchar(50), oracleid varchar(50), groupadmin tinyint(4)
+familyadmin tinyint(4), premiumlocation tinyint(4), glibtnemail varchar(100), gliaccount varchar(50), glisubaccount varchar(50), isbusiness tinyint(1), erpaccountid varchar(50), erpsubaccountid varchar(50), erptype varchar(50), erpurl varchar(100), erpconnectionstring varchar(100), erpconnectionstringhash varchar(50), 
