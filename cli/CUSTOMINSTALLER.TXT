@@ -1,0 +1,68 @@
+git clone https://github.com/joomla/joomla-cms.git
+cd joomla-cms
+php cli/install.php \
+   --db-user=myuser --db-name=mydb --db-pass=mysecret \
+   --admin-user=admin --admin-pass=secret --admin-email='admin@example.com'
+rm -rf installation
+
+
+/////////////////////////////////////////////////////////-PROPOSEDCHANGE
+//CLI DIRECTORY EXISTS IN EVERY INSTALLATION... THIS WOULD REQUIRE THE INSTALLATION DIRECTORY TO BE PRESENT WHICH IT IS UNTIL THE PRODUCT IS INSTALLED.
+//JOOMLA LOOKS FOR CONFIGURATION.PHP IN THE ROOT DIRECTORY.... AND THIS SCRIPT LIKELY NEEDS WRITE ACCESS TO THE ROOT DRIVE SO SHOULD BE RUN AS A SUDO/ADMINISTRATOR LOGIN
+// NOW WE INTEND TO USE A CUSTOM INSTALLER WITH A CUSTOM SQL FILE.... IF YOU SELECT MYSQL ...... IT RUNS THE .SQL FILE IN THE /INSTALLATION/SQL DIRECTORY.... ADDING FIELDS OR NEW TABLES TO THIS INSTANCE
+//SHOULD NOT IMPACT THE OPERATIONS OF JOOMLA....NOTE HOWEVER THAT JOOMLA USER TABLE CANNOT BE MODIFIED FOR THE BASE FIELDS AS YOU LITERALLY CANT CREATE A USER IF THE BASE FIELDS ARE CHANGED. YOU CAN HOWEVER EXTEND THE TABLE AND ADD ANYTHING TO IT... WITHIN REASON.
+//ADDITIONAL TABLES IN THE JOOMLA DIRECTORY USING THE JOOMLA TABLE STRUCTURE SHOULD BE CONSISTENT AS LONG AS THE .SQL FILE IS CONSISTENT IN NAME AND STRUCTURE....
+
+
+git clone https://github.com/joomla/joomla-cms.git
+cd joomla-cms
+php cli/custominstaller.php \
+   --db-user=myuser --db-name=mydb --db-pass=mysecret \
+   --admin-user=admin --admin-pass=secret --admin-email='admin@example.com'
+rm -rf installation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////RELEVANT COMMENTS
+getopt has its own little language for how to describe parameters, and the trailing ":" means "this parameter requires the user to supply a value". http://php.net/getopt illustrates this with an example:
+
+<?php
+// Script example.php
+$shortopts  = "";
+$shortopts .= "f:";  // Required value
+$shortopts .= "v::"; // Optional value
+$shortopts .= "abc"; // These options do not accept values
+
+$longopts  = array(
+    "required:",     // Required value
+    "optional::",    // Optional value
+    "option",        // No value
+    "opt",           // No value
+);
+$options = getopt($shortopts, $longopts);
+var_dump($options);
